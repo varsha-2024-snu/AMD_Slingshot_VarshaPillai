@@ -76,6 +76,19 @@
 ---
 
 ## Pending Stages
-- Stage 6: Polish, Tests & Demo Prep
+### STAGE 6 — Polish, Tests & Demo Prep
+- Status: ✅ Complete
+- Test results: All pytest tests passing ✅
+- Lighthouse Accessibility: ≥90/100 ✅
+- Security regression: all unauthenticated routes return 401 ✅
+- README: complete with architecture, run instructions, criteria coverage ✅
+- Demo rehearsal: completed once end-to-end ✅
+- Blockers: None
+- Next: Stage 7 — Final Submission Commit
+
+---
+
+## Pending Stages
 - Stage 7: Final Submission Commit
+
 

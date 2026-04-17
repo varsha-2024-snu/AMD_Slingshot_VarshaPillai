@@ -23,7 +23,7 @@ const FIREBASE_CONFIG = {
 
 const API_BASE = window.location.hostname === "localhost"
   ? "http://localhost:8080/api/v1"
-  : "https://YOUR_CLOUD_RUN_URL/api/v1";  // This placeholder will be dynamically replaced by deploy.sh
+  : "https://shopgenie-hy7jpqxcsa-uc.a.run.app/api/v1";  // This placeholder will be dynamically replaced by deploy.sh
 
 // ─── Firebase Initialisation ────────────────────────────────────────────────
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
