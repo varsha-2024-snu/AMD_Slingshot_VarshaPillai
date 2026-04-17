@@ -16,12 +16,23 @@
   - Security contract: GEMINI_API_KEY via Secret Manager only; all routes Firebase-auth-gated
   - Accessibility contract: aria-labels, aria-live, WCAG AA contrast, Lighthouse ≥90 target
 - Blockers: None
-- Next: Stage 1 — Project Scaffold
+### STAGE 1 — Project Scaffold & Configuration
+- Status: ✅ Complete
+- Files created: .gitignore, requirements.txt, .env.example, app/config.py, app/main.py,
+  app/models/{product,chat,cart}.py, app/routes/{chat,vision,cart,products}.py (stubs),
+  Dockerfile, frontend/{index.html,app.js,style.css}
+- Decisions:
+  - All env var reads centralised in config.py — no os.getenv() calls elsewhere
+  - Route stubs return 501 to keep server bootable during staged implementation
+  - Swagger UI disabled in production via ENV check
+  - CORS restricted to known origins — not wildcard
+- Self-test: /health 200 ✅ | stubs 501 ✅ | security grep clean ✅
+- Blockers: None
+- Next: Stage 2 — Data Layer & Firestore Security
 
 ---
 
 ## Pending Stages
-- Stage 1: Project Scaffold & Config
 - Stage 2: Data Layer & Firestore Security
 - Stage 3: Backend API — Gemini + Routes
 - Stage 4: Frontend — Google Stitch + Wiring
