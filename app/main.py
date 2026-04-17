@@ -33,7 +33,7 @@ app = FastAPI(
 # CORS: explicitly restrict to known origins — not wildcard
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_ORIGIN, "https://shopgenie-xxxx-uc.a.run.app"],
+    allow_origins=[FRONTEND_ORIGIN, "https://shopgenie-xxxx-uc.a.run.app", "https://amd-slingshot-cec69.web.app", "https://amd-slingshot-cec69.firebaseapp.com"],
     allow_credentials=True,
     allow_methods=["GET", "POST"],
     allow_headers=["Authorization", "Content-Type"],
