@@ -88,7 +88,14 @@
 
 ---
 
-## Pending Stages
-- Stage 7: Final Submission Commit
+### STAGE 7 — Final Submission Commit
+- Status: ✅ SUBMITTED
+- Deployed URL: https://amd-slingshot-cec69.web.app
+- GitHub Repo: https://github.com/varsha-2024-snu/AMD_Slingshot_VarshaPillai
+- Final health check: ✅
+- Final auth check: ✅
+- Final pytest: ✅ all passing
+- Submission form: completed ✅
+- Demo video: [Pending User action]
 
 
