@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Products are read-only for authenticated users.
+    // Writes are disabled for all users — catalog is seeded server-side only.
+    match /products/{productId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // Cart items are scoped to the authenticated user's own UID.
+    // A user cannot read or write another user's cart under any circumstance.
+    match /carts/{uid}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // User profile is scoped to the authenticated user's own UID.
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Session history is scoped to the authenticated user's own UID.
+    match /sessions/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Deny all other paths explicitly — default-deny posture.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

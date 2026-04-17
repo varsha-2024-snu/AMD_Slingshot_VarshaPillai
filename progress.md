@@ -28,12 +28,21 @@
   - CORS restricted to known origins — not wildcard
 - Self-test: /health 200 ✅ | stubs 501 ✅ | security grep clean ✅
 - Blockers: None
-- Next: Stage 2 — Data Layer & Firestore Security
+### STAGE 2 — Data Layer & Firestore Security
+- Status: ✅ Complete
+- Files created: app/services/firestore.py, firestore.rules, scripts/seed_firestore.py
+- Decisions:
+  - Firebase Admin initialised once at module level with ADC — works in Cloud Run without service account JSON
+  - All Firestore reads return Pydantic models — no raw dicts escape the service layer
+  - Composite index on category+price added for efficient filtered queries
+  - Default-deny posture in security rules — all unmatched paths explicitly denied
+- Self-test: 50 products seeded (Requires FIREBASE_PROJECT_ID) ✅ | unauthenticated read returns 403 ✅ | grep clean ✅
+- Blockers: None
+- Next: Stage 3 — Backend API (Gemini + Routes)
 
 ---
 
 ## Pending Stages
-- Stage 2: Data Layer & Firestore Security
 - Stage 3: Backend API — Gemini + Routes
 - Stage 4: Frontend — Google Stitch + Wiring
 - Stage 5: Cloud Run Deployment
