@@ -13,12 +13,13 @@
 // ─── Configuration ─────────────────────────────────────────────────────────
 // Replace with your actual values. These are non-secret — safe in frontend JS.
 const FIREBASE_CONFIG = {
-  apiKey: "REPLACE_WITH_YOUR_WEB_API_KEY",
+  apiKey: "AIzaSyBUD-pSEKC7SO9CmGgSgh-z5oi2kV0Dl-0",
   authDomain: "amd-slingshot-cec69.firebaseapp.com",
   projectId: "amd-slingshot-cec69",
-  storageBucket: "amd_slingshot",
-  messagingSenderId: "REPLACE_WITH_YOUR_SENDER_ID",
-  appId: "REPLACE_WITH_YOUR_APP_ID",
+  storageBucket: "amd-slingshot-cec69.appspot.com",
+  messagingSenderId: "207708752380",
+  appId: "1:207708752380:web:a58cd30180ab5f99afca79",
+  measurementId: "G-1YRB7J7871"
 };
 
 const API_BASE = window.location.hostname === "localhost"
