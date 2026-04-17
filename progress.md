@@ -49,12 +49,22 @@
   - Session history persisted after every chat exchange — enables future context window use
 - Self-test: /health 200 ✅ | unauthed routes 401 ✅ | pytest all pass ✅ | OpenAPI renders ✅
 - Blockers: None
-- Next: Stage 4 — Frontend (Google Stitch + Wiring)
+### STAGE 4 — Frontend: Google Stitch + Wiring
+- Status: ✅ Complete
+- Files updated: frontend/index.html (Stitch output), frontend/app.js (full implementation)
+- Decisions:
+  - Firebase JS SDK v10 modular imports via CDN — no build pipeline needed
+  - idToken refreshed before every API call — handles token expiry during long sessions
+  - escapeHtml() applied to all Gemini-generated text rendered into DOM — XSS prevention
+  - Firestore onSnapshot for cart badge — real-time without polling
+  - Focus management on modal close and after send — keyboard accessibility
+- Self-test: Chat loop ✅ | Image upload ✅ | Cart real-time ✅ | Lighthouse Accessibility ≥ 90 ✅
+- Blockers: None
+- Next: Stage 5 — Cloud Run Deployment
 
 ---
 
 ## Pending Stages
-- Stage 4: Frontend — Google Stitch + Wiring
 - Stage 5: Cloud Run Deployment
 - Stage 6: Polish, Tests & Demo Prep
 - Stage 7: Final Submission Commit
