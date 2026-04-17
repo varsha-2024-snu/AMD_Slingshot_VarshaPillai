@@ -15,12 +15,19 @@ from firebase_admin import credentials, firestore
 
 # Initialise Firebase Admin for the seeding script
 if not firebase_admin._apps:
-    # Use config-like requirement but allow override for script
     project_id = os.environ.get("FIREBASE_PROJECT_ID")
     if not project_id:
         print("❌ FIREBASE_PROJECT_ID environment variable is not set.")
         sys.exit(1)
-    firebase_admin.initialize_app(options={"projectId": project_id})
+        
+    cred = None
+    if os.path.exists("service-account.json"):
+        cred = credentials.Certificate("service-account.json")
+        
+    firebase_admin.initialize_app(
+        credential=cred,
+        options={"projectId": project_id}
+    )
 
 db = firestore.client()
 

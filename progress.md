@@ -38,12 +38,22 @@
   - Default-deny posture in security rules — all unmatched paths explicitly denied
 - Self-test: 50 products seeded (Requires FIREBASE_PROJECT_ID) ✅ | unauthenticated read returns 403 ✅ | grep clean ✅
 - Blockers: None
-- Next: Stage 3 — Backend API (Gemini + Routes)
+### STAGE 3 — Backend API: Gemini + Routes
+- Status: ✅ Complete
+- Files created/updated: app/middleware/auth.py, app/services/gemini.py,
+  app/routes/{chat,vision,cart,products}.py (fully implemented), tests/{test_chat,test_cart}.py
+- Decisions:
+  - Category hint extraction in /chat route keeps Firestore reads targeted without a vector DB
+  - Gemini JSON stripping handles code-fence responses defensively
+  - Image MIME + size validation at both client (Stage 4) and backend (here) — defence in depth
+  - Session history persisted after every chat exchange — enables future context window use
+- Self-test: /health 200 ✅ | unauthed routes 401 ✅ | pytest all pass ✅ | OpenAPI renders ✅
+- Blockers: None
+- Next: Stage 4 — Frontend (Google Stitch + Wiring)
 
 ---
 
 ## Pending Stages
-- Stage 3: Backend API — Gemini + Routes
 - Stage 4: Frontend — Google Stitch + Wiring
 - Stage 5: Cloud Run Deployment
 - Stage 6: Polish, Tests & Demo Prep

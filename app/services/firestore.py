@@ -6,6 +6,7 @@ Routes never import the Firestore client directly — they call these functions.
 This makes the data layer independently testable and swappable.
 """
 
+import os
 import logging
 from typing import Optional
 import firebase_admin
@@ -20,9 +21,15 @@ logger = logging.getLogger(__name__)
 
 # Initialise Firebase Admin once at module load.
 # In Cloud Run, Application Default Credentials (ADC) are used automatically.
-# Locally, set GOOGLE_APPLICATION_CREDENTIALS env var to a service account JSON path.
 if not firebase_admin._apps:
-    firebase_admin.initialize_app(options={"projectId": FIREBASE_PROJECT_ID})
+    cred = None
+    if os.path.exists("service-account.json"):
+        cred = credentials.Certificate("service-account.json")
+    
+    firebase_admin.initialize_app(
+        credential=cred,
+        options={"projectId": FIREBASE_PROJECT_ID}
+    )
 
 _db = firestore.client()
 
